@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Кристина Филиппова — Marketing &amp; Brand Communications</title>
+<meta name="description" content="Портфолио Кристины Филипповой. Marketing &amp; Brand Communications." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --bg:#F7F2E9;
+    --bg-raised:#FFFFFF;
+    --text:#1C1611;
+    --text-dim:#1C1611b3;
+    --text-faint:#1C161170;
+    --gold:#96702B;
+    --gold-soft:#96702B26;
+    --rust:#A8623B;
+    --wine:#6E1F26;
+    --line:#1C16111f;
+    --cover-text:#F4ECDF;
+    --cover-text-dim:#F4ECDFcc;
+    --cover-gold:#E3B368;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; background:var(--bg); }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.5;
+    overflow-x:hidden;
+    cursor:none;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+  }
+
+  /* ---------- custom cursor ---------- */
+  #cursor-dot, #cursor-ring{
+    position:fixed;
+    top:0; left:0;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    mix-blend-mode:difference;
+  }
+  #cursor-dot{
+    width:4px; height:4px;
+    background:#fff;
+    border-radius:50%;
+    transition:opacity .2s ease;
+  }
+  #cursor-ring{
+    width:26px; height:26px;
+    border:1px solid #fff;
+    border-radius:50%;
+    transition:width .18s var(--ease), height .18s var(--ease), border-color .18s ease, opacity .2s ease;
+  }
+  #cursor-ring::before, #cursor-ring::after{
+    content:"";
+    position:absolute;
+    background:#fff;
+  }
+  #cursor-ring::before{ left:50%; top:-5px; width:1px; height:6px; transform:translateX(-50%); }
+  #cursor-ring::after{ top:50%; left:-5px; width:6px; height:1px; transform:translateY(-50%); }
+  body.hovering #cursor-ring{ width:44px; height:44px; }
+  @media (hover:none), (pointer:coarse){
+    #cursor-dot, #cursor-ring{ display:none; }
+    body{ cursor:auto; }
+  }
+
+  /* ---------- grain + vignette ---------- */
+  #grain{
+    position:fixed; inset:-60px;
+    z-index:9998;
+    pointer-events:none;
+    opacity:.035;
+    mix-blend-mode:multiply;
+    background:repeating-conic-gradient(rgba(28,22,17,.4) 0% .25%, transparent 0% .5%);
+  }
+  #grain svg{ width:0; height:0; position:absolute; }
+  .grain-layer{
+    position:fixed; inset:-60px;
+    z-index:9997;
+    pointer-events:none;
+    opacity:.07;
+    mix-blend-mode:multiply;
+    filter:url(#film-grain);
+  }
+  #vignette{
+    position:fixed; inset:0;
+    z-index:9996;
+    pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 55%, rgba(28,22,17,.16) 100%);
+  }
+
+  /* ---------- header ---------- */
+  header#masthead{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:500;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1.4rem clamp(1.2rem, 4vw, 3rem);
+    background:transparent;
+    color:var(--cover-text);
+    text-shadow:0 2px 14px rgba(0,0,0,.35);
+    --header-accent:var(--cover-gold);
+    transition:background .4s ease, backdrop-filter .4s ease, border-color .4s ease, padding .3s ease, color .4s ease, text-shadow .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header#masthead.scrolled{
+    background:rgba(247,242,233,.82);
+    backdrop-filter:blur(14px) saturate(120%);
+    -webkit-backdrop-filter:blur(14px) saturate(120%);
+    border-bottom:1px solid var(--line);
+    padding:1rem clamp(1.2rem, 4vw, 3rem);
+    color:var(--text);
+    text-shadow:none;
+    --header-accent:var(--gold);
+  }
+  .masthead-name{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    letter-spacing:.02em;
+    color:inherit;
+  }
+  nav#toc{
+    display:flex;
+    gap:clamp(.6rem, 2vw, 1.6rem);
+    align-items:center;
+  }
+  nav#toc a{
+    font-size:.72rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:inherit;
+    opacity:.78;
+    white-space:nowrap;
+    position:relative;
+    padding:.2rem 0;
+    transition:color .3s ease, opacity .3s ease;
+  }
+  nav#toc a span.num{ color:var(--header-accent); margin-right:.35em; font-weight:600; }
+  nav#toc a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0%; height:1px;
+    background:var(--header-accent);
+    transition:width .3s var(--ease);
+  }
+  nav#toc a:hover{ opacity:1; }
+  nav#toc a:hover::after{ width:100%; }
+  #nav-toggle{ display:none; }
+
+  /* ---------- sections generic ---------- */
+  section{
+    position:relative;
+    min-height:100vh;
+    width:100%;
+    padding:clamp(6rem,10vh,8rem) clamp(1.2rem,6vw,5rem) clamp(4rem,8vh,6rem);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  section + section{ border-top:1px solid var(--line); }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .in-view .reveal{ opacity:1; transform:translateY(0); }
+  .in-view .reveal:nth-child(1){ transition-delay:.02s; }
+  .in-view .reveal:nth-child(2){ transition-delay:.12s; }
+  .in-view .reveal:nth-child(3){ transition-delay:.22s; }
+  .in-view .reveal:nth-child(4){ transition-delay:.32s; }
+  .in-view .reveal:nth-child(5){ transition-delay:.42s; }
+  .in-view .reveal:nth-child(6){ transition-delay:.52s; }
+
+  .section-num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:.95rem;
+    color:var(--text-faint);
+    margin-bottom:1.2rem;
+    display:block;
+  }
+
+  /* ---------- cover ---------- */
+  #cover{
+    padding:0;
+    min-height:100vh;
+    overflow:hidden;
+  }
+  .cover-media{
+    position:absolute; inset:0;
+    z-index:0;
+    overflow:hidden;
+  }
+  .cover-media img{
+    position:absolute;
+    top:50%; left:50%;
+    width:110%; height:110%;
+    object-fit:cover;
+    transform:translate(-50%,-50%) scale(1.05);
+    filter:brightness(.55) saturate(1.05) contrast(1.08);
+  }
+  .cover-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(14,11,9,.35) 0%, rgba(14,11,9,.15) 35%, rgba(14,11,9,.85) 100%),
+      linear-gradient(90deg, rgba(14,11,9,.6) 0%, transparent 30%, transparent 70%, rgba(14,11,9,.6) 100%);
+  }
+  .cover-content{
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    min-height:100vh;
+    padding:0 clamp(1.2rem,6vw,5rem) clamp(3rem,8vh,5rem);
+  }
+  .cover-content .eyebrow{ margin-bottom:1rem; color:var(--cover-gold); }
+  h1.cover-title{
+    font-size:clamp(3rem, 11vw, 8.5rem);
+    letter-spacing:-.02em;
+    color:var(--cover-text);
+    text-shadow:0 4px 40px rgba(0,0,0,.4);
+  }
+  .cover-sub{
+    font-family:var(--sans);
+    font-size:clamp(1rem,2vw,1.25rem);
+    letter-spacing:.03em;
+    color:var(--cover-gold);
+    margin-top:1.1rem;
+    font-weight:500;
+    text-transform:uppercase;
+  }
+  .cover-manifesto{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1rem,1.6vw,1.4rem);
+    color:var(--cover-text-dim);
+    margin-top:1.8rem;
+    max-width:38ch;
+  }
+  .cover-scroll{
+    position:absolute;
+    bottom:2rem; right:clamp(1.2rem,6vw,5rem);
+    z-index:1;
+    font-size:.7rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--cover-text-dim);
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+  }
+  .cover-scroll::after{
+    content:"";
+    width:1px; height:34px;
+    background:linear-gradient(var(--cover-gold), transparent);
+    animation:scrollpulse 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollpulse{ 0%,100%{ opacity:.3; } 50%{ opacity:1; } }
+
+  /* ---------- contents ---------- */
+  #contents .head-row{ margin-bottom:clamp(2.5rem,6vh,4rem); }
+  #contents h2{ font-size:clamp(2.2rem,5vw,4rem); }
+  .contents-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    column-gap:clamp(2rem,4vw,4rem);
+  }
+  .toc-row{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:baseline;
+    gap:1.2rem;
+    padding:1.15rem 0;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    cursor:pointer;
+    transition:padding-left .35s var(--ease);
+  }
+  .toc-row .toc-index{ font-family:var(--serif); font-style:italic; color:var(--text-faint); font-size:1rem; }
+  .toc-row .toc-title{ font-family:var(--serif); font-size:clamp(1.1rem,1.8vw,1.5rem); transition:color .3s ease; }
+  .toc-row .toc-stat{ font-family:var(--serif); font-size:1.05rem; color:var(--gold); font-weight:500; white-space:nowrap; }
+  .toc-row .toc-desc{
+    grid-column:1 / -1;
+    font-size:.85rem;
+    color:var(--text-faint);
+    max-width:52ch;
+    margin-top:.3rem;
+  }
+  .toc-row:hover{ padding-left:1rem; border-color:var(--gold-soft); }
+  .toc-row:hover .toc-title{ color:var(--gold); }
+  .toc-preview{
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%) translateX(12px);
+    width:110px; height:78px;
+    border:1px solid var(--line);
+    overflow:hidden;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .35s var(--ease), transform .35s var(--ease);
+    z-index:2;
+    background:var(--bg-raised);
+  }
+  .toc-preview img{ width:100%; height:100%; object-fit:cover; filter:brightness(.65) saturate(1.05); }
+  .toc-row:hover .toc-preview{ opacity:1; transform:translateY(-50%) translateX(0); }
+
+  /* ---------- case sections ---------- */
+  .case-kicker{ display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:.6rem; }
+  .case-title{ font-size:clamp(2.4rem,6vw,5rem); }
+  .case-role{ font-size:.85rem; color:var(--text-faint); letter-spacing:.05em; text-transform:uppercase; margin-bottom:clamp(2.5rem,5vh,3.5rem); }
+
+  .case-screens{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:2.5rem 3rem;
+  }
+  .screen{
+    border-top:1px solid var(--gold-soft);
+    padding-top:1.4rem;
+  }
+  .screen .screen-label{ font-family:var(--sans); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rust); margin-bottom:.9rem; display:block; }
+  .screen h3{ font-size:clamp(1.3rem,2.2vw,1.8rem); margin-bottom:.7rem; }
+  .screen p{ color:var(--text-dim); font-size:.95rem; max-width:56ch; }
+
+  .pull-quote{
+    font-family:var(--serif);
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    color:var(--gold);
+    font-weight:500;
+    line-height:1;
+    margin-bottom:.6rem;
+  }
+  .pull-quote small{
+    display:block;
+    font-family:var(--sans);
+    font-size:.8rem;
+    letter-spacing:.03em;
+    color:var(--text-dim);
+    text-transform:none;
+    font-weight:400;
+    margin-top:.6rem;
+    line-height:1.4;
+  }
+
+  .case-media{
+    width:100%;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    border:1px solid var(--line);
+    margin-bottom:1.4rem;
+  }
+  .case-media img{ width:100%; height:100%; object-fit:cover; filter:grayscale(.15) brightness(.7) contrast(1.1); }
+
+  .chip-rail{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    margin-top:1.6rem;
+  }
+  .chip{
+    font-size:.72rem;
+    letter-spacing:.05em;
+    padding:.45rem .9rem;
+    border:1px solid var(--line);
+    color:var(--text-dim);
+    text-transform:uppercase;
+    transition:border-color .3s ease, color .3s ease, background .3s ease;
+  }
+  .chip:hover{ border-color:var(--gold); color:var(--gold); background:var(--gold-soft); }
+
+  /* ---------- compact cases ---------- */
+  .case-compact{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:clamp(2rem,5vw,4rem);
+    align-items:center;
+  }
+  .case-compact .case-media{ margin-bottom:0; aspect-ratio:4/5; }
+  .case-compact .tag-line{ color:var(--rust); font-family:var(--serif); font-style:italic; font-size:1.1rem; margin:1rem 0 1.3rem; }
+  .case-compact p{ color:var(--text-dim); max-width:56ch; margin-bottom:1rem; }
+  .stat-line{ display:flex; gap:2.2rem; margin-top:1.6rem; flex-wrap:wrap; }
+  .stat-line div{ }
+  .stat-line .stat-num{ font-family:var(--serif); color:var(--gold); font-size:1.7rem; display:block; }
+  .stat-line .stat-label{ font-size:.72rem; color:var(--text-faint); text-transform:uppercase; letter-spacing:.06em; }
+
+  /* ---------- toolkit ---------- */
+  .toolkit-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.4rem;
+  }
+  .toolkit-card{
+    border:1px solid var(--line);
+    padding:1.8rem 1.6rem;
+    background:linear-gradient(180deg, rgba(28,22,17,.02), transparent);
+    transition:border-color .35s ease, transform .35s var(--ease), background .35s ease;
+  }
+  .toolkit-card:hover{
+    border-color:var(--gold-soft);
+    transform:translateY(-6px);
+    background:linear-gradient(180deg, rgba(150,112,43,.09), transparent);
+  }
+  .toolkit-card .eyebrow{ display:block; margin-bottom:.9rem; }
+  .toolkit-card ul{ list-style:none; }
+  .toolkit-card li{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    padding:.4rem 0;
+    border-bottom:1px solid var(--line);
+    color:var(--text);
+  }
+  .toolkit-card li:last-child{ border-bottom:none; }
+
+  /* ---------- press ---------- */
+  #press .press-col{
+    max-width:56ch;
+    margin:0 auto;
+    width:100%;
+  }
+  .press-item{
+    padding:1.6rem 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:1.4rem;
+  }
+  .press-item:last-child{ border-bottom:none; }
+  .press-year{ font-family:var(--serif); font-style:italic; color:var(--text-faint); }
+  .press-item h3{ font-size:1.15rem; margin-bottom:.35rem; }
+  .press-item p{ color:var(--text-dim); font-size:.9rem; }
+
+  /* ---------- colophon / footer ---------- */
+  footer#colophon{
+    min-height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:clamp(4rem,8vh,6rem) clamp(1.2rem,6vw,5rem) 2.5rem;
+    border-top:1px solid var(--line);
+  }
+  .colophon-top{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:2rem;
+  }
+  .colophon-top h2{ font-size:clamp(2rem,4.5vw,3.2rem); max-width:14ch; }
+  .colophon-col .eyebrow{ display:block; margin-bottom:1rem; }
+  .colophon-col a, .colophon-col p{ display:block; color:var(--text-dim); font-size:.95rem; padding:.3rem 0; transition:color .3s ease; }
+  .colophon-col a:hover{ color:var(--gold); }
+  .colophon-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+    gap:1rem;
+  }
+  .colophon-bottom .masthead-mark{ font-family:var(--serif); font-style:italic; color:var(--text-faint); font-size:.85rem; }
+  .colophon-bottom .issue{ font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); }
+
+  /* ---------- tablet ---------- */
+  @media (max-width:991px){
+    nav#toc a .label{ display:none; }
+    nav#toc{ gap:1rem; }
+    .contents-grid{ grid-template-columns:1fr; }
+    .case-screens{ grid-template-columns:1fr; }
+    .case-compact{ grid-template-columns:1fr; }
+    .case-compact .case-media{ aspect-ratio:16/9; }
+    .toolkit-grid{ grid-template-columns:repeat(2,1fr); }
+    .colophon-top{ grid-template-columns:1fr 1fr; }
+    .toc-preview{ display:none; }
+  }
+
+  /* ---------- mobile ---------- */
+  @media (max-width:479px){
+    body{ cursor:auto; }
+    #cursor-dot, #cursor-ring{ display:none; }
+    section{ min-height:100vh; height:auto; padding:5.5rem 1.1rem 3.5rem; }
+    header#masthead{ padding:1rem 1.1rem; }
+    .masthead-name{ font-size:.9rem; }
+    nav#toc{ gap:.7rem; }
+    nav#toc a{ font-size:.65rem; }
+    h1.cover-title{ font-size:clamp(2.6rem,16vw,3.6rem); }
+    .toolkit-grid{ grid-template-columns:1fr; }
+    .colophon-top{ grid-template-columns:1fr; gap:2.2rem; }
+    .press-item{ grid-template-columns:1fr; gap:.4rem; }
+    .case-role{ margin-bottom:2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- film grain filter -->
+<div id="grain">
+  <svg><filter id="film-grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0"/></filter></svg>
+</div>
+<div class="grain-layer" id="grain-anim"></div>
+<div id="vignette"></div>
+<div id="cursor-ring"></div>
+<div id="cursor-dot"></div>
+
+<header id="masthead">
+  <div class="masthead-name">Кристина Филиппова</div>
+  <button id="nav-toggle" aria-label="Меню">☰</button>
+  <nav id="toc">
+    <a href="#contents"><span class="num">01</span><span class="label">Contents</span></a>
+    <a href="#case-nodrama"><span class="num">02</span><span class="label">No Drama</span></a>
+    <a href="#case-letoile"><span class="num">03</span><span class="label">L'Étoile</span></a>
+    <a href="#case-tara"><span class="num">04</span><span class="label">Tara.ru</span></a>
+    <a href="#toolkit"><span class="num">05</span><span class="label">Toolkit</span></a>
+    <a href="#press"><span class="num">06</span><span class="label">Press</span></a>
+    <a href="#colophon"><span class="num">07</span><span class="label">Colophon</span></a>
+  </nav>
+</header>
+
+<!-- ============ 1. COVER ============ -->
+<section id="cover">
+  <div class="cover-media" data-parallax>
+    <!-- ЗАГЛУШКА: кинематографичный кадр-коллаж — горы/ночной город/портрет в единой цветокоррекции (тёплый низкий ключ, амбер+тень) -->
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFhMTQxMCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjM2QyYzFiIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGUwYjA5Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI2cpIi8+PC9zdmc+" alt="Кинематографичный коллаж: горы на рассвете, силуэт ночного города и портрет в тёплом низкоключевом свете — единая цветокоррекция объединяет разнородные кадры" />
+  </div>
+  <div class="cover-content">
+    <span class="eyebrow reveal">Issue №1 — Portfolio</span>
+    <h1 class="cover-title reveal">Кристина<br/>Филиппова</h1>
+    <div class="cover-sub reveal">Marketing &amp; Brand Communications</div>
+    <p class="cover-manifesto reveal">Порядок — это то, что остаётся, когда находишь свет для каждого кадра.</p>
+  </div>
+  <div class="cover-scroll">Scroll</div>
+</section>
+
+<!-- ============ 2. CONTENTS ============ -->
+<section id="contents">
+  <div class="head-row reveal">
+    <span class="section-num">01 — Contents</span>
+    <h2>Оглавление</h2>
+  </div>
+  <div class="contents-grid">
+    <div>
+      <div class="toc-row reveal" data-target="#case-nodrama">
+        <span class="toc-index">02</span>
+        <span class="toc-title">No Drama</span>
+        <span class="toc-stat">+22%</span>
+        <span class="toc-desc">Запуск бренда без нравоучений: контекст, концепция, механика, результат.</span>
+        <div class="toc-preview"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTQwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzNkMmMxYiIvPjwvc3ZnPg==" alt="Кадр из кампании No Drama — крупный план, тёплый свет" /></div>
+      </div>
+      <div class="toc-row reveal" data-target="#case-letoile">
+        <span class="toc-index">03</span>
+        <span class="toc-title">Л'Этуаль</span>
+        <span class="toc-stat">[ЦИФРА]</span>
+        <span class="toc-desc">CJM и retail-опыт: путь покупателя от витрины до кассы.</span>
+        <div class="toc-preview"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTQwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzJhMjAxNiIvPjwvc3ZnPg==" alt="Кадр из ритейл-пространства Л'Этуаль, ночной кинематографичный свет" /></div>
+      </div>
+    </div>
+    <div>
+      <div class="toc-row reveal" data-target="#case-tara">
+        <span class="toc-index">04</span>
+        <span class="toc-title">Tara.ru</span>
+        <span class="toc-stat">[ЦИФРА]</span>
+        <span class="toc-desc">Брендбук с нуля — ранняя глава в систематизации бренда.</span>
+        <div class="toc-preview"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTQwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzFmMTgxMiIvPjwvc3ZnPg==" alt="Раскладка брендбука Tara.ru, документальный кадр" /></div>
+      </div>
+      <div class="toc-row reveal" data-target="#toolkit">
+        <span class="toc-index">05</span>
+        <span class="toc-title">Toolkit</span>
+        <span class="toc-stat">5</span>
+        <span class="toc-desc">Инструменты в деле: исследования, аналитика, AI, дизайн, контент.</span>
+        <div class="toc-preview"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTQwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzM1MjcxNyIvPjwvc3ZnPg==" alt="Рабочий стол с инструментами аналитики, тёплый предметный свет" /></div>
+      </div>
+      <div class="toc-row reveal" data-target="#press">
+        <span class="toc-index">06</span>
+        <span class="toc-title">Press</span>
+        <span class="toc-stat">[ЦИФРА]</span>
+        <span class="toc-desc">Упоминания: конференция, благодарность от ИМИСП.</span>
+        <div class="toc-preview"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTQwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzQwMWUxZSIvPjwvc3ZnPg==" alt="Кадр с конференции, документальная съёмка" /></div>
+      </div>
+      <div class="toc-row reveal" data-target="#colophon">
+        <span class="toc-index">07</span>
+        <span class="toc-title">Colophon</span>
+        <span class="toc-stat">2026</span>
+        <span class="toc-desc">Контакты и выходные данные этого выпуска.</span>
+        <div class="toc-preview"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTQwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iIzE1MTAwYyIvPjwvc3ZnPg==" alt="Тёмный минималистичный кадр для колофона" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. CASE — NO DRAMA ============ -->
+<section id="case-nodrama">
+  <span class="section-num reveal">02 — Case</span>
+  <div class="case-kicker reveal">
+    <h2 class="case-title">No Drama</h2>
+  </div>
+  <div class="case-role reveal">Запуск бренда · Стратегия коммуникации · Performance &amp; UGC</div>
+
+  <div class="case-screens">
+    <div class="screen reveal">
+      <span class="screen-label">Контекст</span>
+      <h3>Рынок тонет в обещаниях</h3>
+      <p>Категория ухода за волосами перегружена шумом полки — каждый бренд обещает трансформацию. No Drama выходит с обратным: без драмы, без нравоучений. Задача — ввести бренд в разговор так, чтобы его услышали за этим шумом.</p>
+    </div>
+    <div class="screen reveal">
+      <span class="screen-label">Концепция</span>
+      <h3>Одна эмоция вместо десяти обещаний</h3>
+      <p>Коммуникация строится вокруг спокойствия. История разворачивается как «до» и «после» драмы — без морали, без давления, с уважением к зрителю и его собственному опыту.</p>
+    </div>
+    <div class="screen reveal">
+      <span class="screen-label">Механика</span>
+      <h3>От инфлюенсеров до комьюнити</h3>
+      <p>Многоканальный запуск: инфлюенсер-механики на старте, UGC-конкурс для вовлечения аудитории, перформанс-таргетинг для охвата и комьюнити-менеджмент для удержания разговора после пика.</p>
+      <div class="chip-rail">
+        <span class="chip">SMM</span>
+        <span class="chip">Influencer</span>
+        <span class="chip">UGC</span>
+        <span class="chip">Performance</span>
+        <span class="chip">Комьюнити</span>
+      </div>
+    </div>
+    <div class="screen reveal">
+      <span class="screen-label">Результаты</span>
+      <div class="pull-quote">81%<small>аудитории отметили интерес к запуску [ЦИФРА — уточнить источник и период измерения]</small></div>
+      <div class="pull-quote">+22%<small>рост UGC-упоминаний бренда за период кампании [ЦИФРА — уточнить период]</small></div>
+    </div>
+  </div>
+
+  <div class="case-media reveal" style="margin-top:2.4rem;">
+    <!-- ЗАГЛУШКА: широкий кадр кампании No Drama — предметная/портретная съёмка, тёплый низкий ключ -->
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDEwMDAiPjxyZWN0IHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwMDAiIGZpbGw9IiMyYTFmMTQiLz48L3N2Zz4=" alt="Кадр кампании No Drama — портрет в тёплом кинематографичном свете, крупный план" />
+  </div>
+</section>
+
+<!-- ============ 4. CASE — L'ÉTOILE (compact) ============ -->
+<section id="case-letoile">
+  <span class="section-num reveal">03 — Case, врезка</span>
+  <div class="case-compact">
+    <div class="case-media reveal">
+      <!-- ЗАГЛУШКА: ночной кадр витрины/ритейл-пространства Л'Этуаль -->
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEyNTAiPjxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEyNTAiIGZpbGw9IiMyMTE3MGYiLz48L3N2Zz4=" alt="Ночной кадр витрины Л'Этуаль, отражения света на стекле" />
+    </div>
+    <div class="reveal">
+      <h2 class="case-title" style="font-size:clamp(2rem,4vw,3.2rem);">Л'Этуаль</h2>
+      <p class="tag-line">Путь покупателя — это тоже сюжет.</p>
+      <p>Л'Этуаль — тысячи точек контакта одновременно. Я картографирую customer journey от витрины до кассы, нахожу разрывы в retail-опыте и превращаю их в точки роста для коммуникации на местах.</p>
+      <div class="stat-line">
+        <div><span class="stat-num">[ЦИФРА]</span><span class="stat-label">точек CJM пересмотрено</span></div>
+        <div><span class="stat-num">[ЦИФРА]</span><span class="stat-label">retail-локаций</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. CASE — TARA.RU (compact) ============ -->
+<section id="case-tara">
+  <span class="section-num reveal">04 — Case, ранняя глава</span>
+  <div class="case-compact">
+    <div class="reveal" style="order:2;">
+      <h2 class="case-title" style="font-size:clamp(2rem,4vw,3.2rem);">Tara.ru</h2>
+      <p class="tag-line">Прежде чем строить кампании — строю правила.</p>
+      <p>Для Tara.ru это была первая глава: брендбук с нуля. Голос, визуальный код, границы допустимого — система, на которую опирается любая будущая коммуникация бренда.</p>
+      <div class="stat-line">
+        <div><span class="stat-num">[ЦИФРА]</span><span class="stat-label">страниц брендбука</span></div>
+        <div><span class="stat-num">1</span><span class="stat-label">система с нуля</span></div>
+      </div>
+    </div>
+    <div class="case-media reveal" style="order:1;">
+      <!-- ЗАГЛУШКА: раскладка страниц брендбука Tara.ru на столе, документальный свет -->
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEyNTAiPjxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEyNTAiIGZpbGw9IiMyNjFhMTAiLz48L3N2Zz4=" alt="Раскладка страниц брендбука Tara.ru на тёмном столе" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. TOOLKIT ============ -->
+<section id="toolkit">
+  <span class="section-num reveal">05 — Toolkit</span>
+  <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,4rem); margin-bottom:2.5rem;">Инструменты в деле</h2>
+  <div class="toolkit-grid">
+    <div class="toolkit-card reveal">
+      <span class="eyebrow">Исследования</span>
+      <ul>
+        <li>CustDev &amp; глубинные интервью</li>
+        <li>Конкурентный анализ</li>
+        <li>Полевые наблюдения</li>
+      </ul>
+    </div>
+    <div class="toolkit-card reveal">
+      <span class="eyebrow">Аналитика данных</span>
+      <ul>
+        <li>Tableau</li>
+        <li>Python</li>
+        <li>Google Sheets / Excel</li>
+      </ul>
+    </div>
+    <div class="toolkit-card reveal">
+      <span class="eyebrow">AI-инструменты</span>
+      <ul>
+        <li>Midjourney</li>
+        <li>Claude / ChatGPT</li>
+        <li>Промпт-автоматизация</li>
+      </ul>
+    </div>
+    <div class="toolkit-card reveal">
+      <span class="eyebrow">Дизайн и веб</span>
+      <ul>
+        <li>Figma</li>
+        <li>Tilda</li>
+        <li>Photoshop</li>
+      </ul>
+    </div>
+    <div class="toolkit-card reveal">
+      <span class="eyebrow">Контент</span>
+      <ul>
+        <li>Копирайтинг</li>
+        <li>Съёмка референсов</li>
+        <li>Редактура</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. PRESS ============ -->
+<section id="press">
+  <span class="section-num reveal">06 — Press</span>
+  <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,4rem); margin-bottom:2.5rem;">Достижения</h2>
+  <div class="press-col">
+    <div class="press-item reveal">
+      <span class="press-year">[ГОД]</span>
+      <div>
+        <h3>[НАЗВАНИЕ КОНФЕРЕНЦИИ]</h3>
+        <p>[ЦИФРА / детали выступления — тема доклада, формат участия]</p>
+      </div>
+    </div>
+    <div class="press-item reveal">
+      <span class="press-year">[ГОД]</span>
+      <div>
+        <h3>Благодарность от ИМИСП</h3>
+        <p>[ЦИФРА / детали — за какой проект или вклад присуждена благодарность]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. COLOPHON / FOOTER ============ -->
+<footer id="colophon">
+  <div class="colophon-top">
+    <div class="reveal">
+      <span class="section-num">07 — Colophon</span>
+      <h2>Кристина Филиппова</h2>
+    </div>
+    <div class="colophon-col reveal">
+      <span class="eyebrow">Контакты</span>
+      <a href="mailto:kris.fil.200@gmail.com">kris.fil.200@gmail.com</a>
+      <a href="https://instagram.com/[ЮЗЕРНЕЙМ]" target="_blank" rel="noopener">Instagram · [ЮЗЕРНЕЙМ]</a>
+    </div>
+    <div class="colophon-col reveal">
+      <span class="eyebrow">Раздел</span>
+      <p>Marketing &amp; Brand Communications</p>
+      <p>Portfolio, Issue №1</p>
+    </div>
+  </div>
+  <div class="colophon-bottom">
+    <span class="masthead-mark">Собрано как печатное издание — свет и сетка вместо украшений.</span>
+    <span class="issue">Выпуск · Июль 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- custom cursor ----------
+  var dot = document.getElementById('cursor-dot');
+  var ring = document.getElementById('cursor-ring');
+  var rx=0, ry=0, dx=0, dy=0;
+  window.addEventListener('mousemove', function(e){
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    rx = e.clientX; ry = e.clientY;
+  });
+  (function loop(){
+    dx += (rx - dx) * 0.18;
+    dy += (ry - dy) * 0.18;
+    ring.style.left = dx + 'px';
+    ring.style.top = dy + 'px';
+    requestAnimationFrame(loop);
+  })();
+  var hoverables = document.querySelectorAll('a, button, .toc-row, .toolkit-card, .chip');
+  hoverables.forEach(function(el){
+    el.addEventListener('mouseenter', function(){ document.body.classList.add('hovering'); });
+    el.addEventListener('mouseleave', function(){ document.body.classList.remove('hovering'); });
+  });
+
+  // ---------- header scroll state ----------
+  var header = document.getElementById('masthead');
+  function onScroll(){
+    if(window.scrollY > 40){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // ---------- reveal on scroll ----------
+  var sections = document.querySelectorAll('section, footer');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.18 });
+  sections.forEach(function(s){ io.observe(s); });
+
+  // ---------- cover parallax ----------
+  var parallax = document.querySelector('[data-parallax]');
+  var cover = document.getElementById('cover');
+  window.addEventListener('scroll', function(){
+    if(!parallax) return;
+    var rect = cover.getBoundingClientRect();
+    var progress = -rect.top / window.innerHeight;
+    if(progress < -0.2 || progress > 1.2) return;
+    parallax.style.transform = 'translateY(' + (progress * 60) + 'px)';
+  }, { passive:true });
+
+  // ---------- toc-row click navigation ----------
+  document.querySelectorAll('.toc-row').forEach(function(row){
+    row.addEventListener('click', function(){
+      var target = document.querySelector(row.getAttribute('data-target'));
+      if(target){ target.scrollIntoView({ behavior:'smooth' }); }
+    });
+  });
+
+  // ---------- grain animation (subtle jitter) ----------
+  var grainAnim = document.getElementById('grain-anim');
+  var gx=0, gy=0;
+  setInterval(function(){
+    gx = (Math.random()*4 - 2);
+    gy = (Math.random()*4 - 2);
+    grainAnim.style.transform = 'translate(' + gx + 'px,' + gy + 'px)';
+  }, 90);
+})();
+</script>
+</body>
+</html>
